@@ -1,0 +1,13 @@
+.map {
+  width: 95vw;
+  height: 95vh;
+  overflow: hidden;
+  background-color: darkgrey;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 2vh;
+}
+
+.map .ol-attribution.ol-uncollapsible {
+  display: none;
+}
