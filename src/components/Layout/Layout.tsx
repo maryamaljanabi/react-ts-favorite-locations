@@ -1,6 +1,7 @@
 import { Map } from "ol";
 import React, { useState } from "react";
-import { Favorites } from "../Favorites/Favorites";
+import FavoritesIcon from "../Favorites/FavoritesIcon";
+import FavoritesList from "../Favorites/FavoritesList";
 import MainMap from "../MainMap/MainMap";
 import SearchBar from "../SearchBar/SearchBar";
 
@@ -12,7 +13,8 @@ const Layout: React.FC = (): JSX.Element => {
     <div>
       <MainMap setMap={setMap} />
       <SearchBar favoritesOpen={favoritesOpen} />
-      <Favorites favoritesOpen={favoritesOpen} setFavoritesOpen={setFavoritesOpen} />
+      <FavoritesIcon favoritesOpen={favoritesOpen} setFavoritesOpen={setFavoritesOpen} />
+      <FavoritesList favoritesOpen={favoritesOpen} setFavoritesOpen={setFavoritesOpen} locationsList={[]} />
     </div>
   );
 };
