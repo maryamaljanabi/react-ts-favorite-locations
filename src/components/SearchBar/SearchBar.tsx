@@ -23,7 +23,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ favoritesOpen }): JSX.Element => 
     },
   ];
 
-  const containerStyle = `absolute top-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-screen transition ease-in-out duration-300 flex ${
+  const containerStyle = `absolute top-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all ease-in-out duration-300 flex ${
     favoritesOpen ? "justify-end w-11/12" : "justify-center w-screen"
   }`;
 

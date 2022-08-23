@@ -12,7 +12,7 @@ const Layout: React.FC = (): JSX.Element => {
     <div>
       <MainMap setMap={setMap} />
       <SearchBar favoritesOpen={favoritesOpen} />
-      <Favorites />
+      <Favorites favoritesOpen={favoritesOpen} setFavoritesOpen={setFavoritesOpen} />
     </div>
   );
 };
