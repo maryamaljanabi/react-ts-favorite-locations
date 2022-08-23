@@ -6,10 +6,12 @@ import SearchBar from "../SearchBar/SearchBar";
 
 const Layout: React.FC = (): JSX.Element => {
   const [map, setMap] = useState<Map>();
+  const [favoritesOpen, setFavoritesOpen] = useState<boolean>(false);
+
   return (
     <div>
       <MainMap setMap={setMap} />
-      <SearchBar />
+      <SearchBar favoritesOpen={favoritesOpen} />
       <Favorites />
     </div>
   );
