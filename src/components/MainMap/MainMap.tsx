@@ -5,6 +5,7 @@ import { OSM } from "ol/source";
 import { FullScreen, ZoomSlider, defaults as defaultControls } from "ol/control";
 import React, { useEffect, useRef } from "react";
 import "./MainMap.css";
+import "ol/ol.css";
 
 interface MapProps {
   setMap: (map: Map) => void;

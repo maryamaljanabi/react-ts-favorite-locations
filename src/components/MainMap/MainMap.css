@@ -8,6 +8,27 @@
   margin-top: 1vh;
 }
 
-.map .ol-attribution.ol-uncollapsible {
+.ol-attribution.ol-uncollapsible {
+  display: none;
+}
+
+.ol-full-screen {
+  top: 10% !important;
+  right: 10px !important;
+}
+
+.ol-zoom {
+  top: 15% !important;
+  right: 10px !important;
+  left: unset !important;
+}
+
+.ol-zoomslider {
+  top: 25% !important;
+  right: 10px !important;
+  left: unset !important;
+}
+
+.ol-attribution.ol-uncollapsible {
   display: none;
 }
