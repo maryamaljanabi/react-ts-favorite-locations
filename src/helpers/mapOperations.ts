@@ -25,7 +25,6 @@ export const pinStyle = (color: string): Style => {
 export const layerExists = (map: Map, layerName: string): boolean => {
   let found = false;
   map.getLayers().forEach((layer) => {
-    console.log(layer, layer.get("name"));
     if (layer && layer.get("name") === layerName) found = true;
   });
   return found;
@@ -59,4 +58,13 @@ export const addFeature = (source: VectorSource<Geometry> | null, coordinates: n
     geometry: new Point(fromLonLat(coordinates)),
   });
   source?.addFeature(feature);
+};
+
+// remove map layer
+export const removeLayer = (map: Map, layerName: string): void => {
+  map.getLayers().forEach((layer) => {
+    if (layer && layer.get("name") === layerName) {
+      map.removeLayer(layer);
+    }
+  });
 };

@@ -1,27 +1,46 @@
-import React, { ChangeEvent, ChangeEventHandler, useState } from "react";
+import React, { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
+import { apiRequests } from "../../api/geoapifyApi";
 
 interface SearchBarProps {
   favoritesOpen: boolean;
+  setLocationsData: (data: []) => void;
+  extent: number[];
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ favoritesOpen }): JSX.Element => {
-  const [searchText, setSearchText] = useState<string>("");
-  const [searchType, setSearchType] = useState<string>("restaurants");
-
+const SearchBar: React.FC<SearchBarProps> = ({ favoritesOpen, setLocationsData, extent }): JSX.Element => {
   const options = [
     {
       label: "Restaurants",
-      value: "restaurants",
+      value: "catering",
     },
     {
       label: "Markets",
-      value: "markets",
+      value: "commercial",
     },
     {
-      label: "Parks",
-      value: "parks",
+      label: "Entertainment",
+      value: "entertainment",
+    },
+    {
+      label: "Accommodation",
+      value: "accommodation",
     },
   ];
+
+  const [searchText, setSearchText] = useState<string>("");
+  const [searchType, setSearchType] = useState<string>(options[0].value);
+
+  const handleLocationsSearch = async (): Promise<void> => {
+    try {
+      if (extent && extent.length) {
+        const res = await apiRequests(searchType, extent);
+        const data = await res.json();
+        if (typeof setLocationsData === "function" && Boolean(data.features) && Boolean(data.features.length)) setLocationsData(data.features);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const containerStyle = `absolute top-10 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all ease-in-out duration-300 flex ${
     favoritesOpen ? "justify-end w-11/12" : "justify-center w-screen"
@@ -42,12 +61,14 @@ const SearchBar: React.FC<SearchBarProps> = ({ favoritesOpen }): JSX.Element => 
       </select>
       <input
         type="text"
-        placeholder="Search for a location..."
+        placeholder="Search for a location near you..."
         value={searchText}
         onChange={(evt: ChangeEvent<HTMLInputElement>): void => setSearchText(evt.target.value)}
         className="p-2 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white text-sm w-1/3 focus:ring-0 focus:outline-none"
       />
-      <button className="px-8 rounded-r-lg bg-slate-800 text-white p-2 uppercase border-slate-800 border-t border-b border-r text-sm">Search</button>
+      <button className="px-8 rounded-r-lg bg-slate-800 text-white p-2 uppercase border-slate-800 border-t border-b border-r text-sm" onClick={(): Promise<void> => handleLocationsSearch()}>
+        Search
+      </button>
     </div>
   );
 };
