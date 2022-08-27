@@ -3,7 +3,7 @@ import View from "ol/View";
 import { Tile as TileLayer } from "ol/layer";
 import { OSM } from "ol/source";
 import { FullScreen, ZoomSlider, defaults as defaultControls } from "ol/control";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./MainMap.css";
 import "ol/ol.css";
 
@@ -12,6 +12,7 @@ interface MapProps {
 }
 
 const MainMap: React.FC<MapProps> = ({ setMap }): JSX.Element => {
+  const [mainMap, setMainMap] = useState<Map>();
   const mapDiv = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -31,12 +32,20 @@ const MainMap: React.FC<MapProps> = ({ setMap }): JSX.Element => {
       view: new View({
         center: [0, 0],
         zoom: 3,
+        minZoom: 2,
+        maxZoom: 18,
       }),
     });
+
+    // newMap.on("click", (evt) => {
+    //   console.log(evt.coordinate);
+    // });
 
     if (typeof setMap === "function") {
       setMap(newMap);
     }
+
+    setMainMap(newMap);
   }, []);
 
   return (
