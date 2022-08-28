@@ -6,17 +6,18 @@ import { Map } from "ol";
 import VectorSource from "ol/source/Vector";
 import Style from "ol/style/Style";
 import Icon from "ol/style/Icon";
-import locationPin from "./../assets/images/location-dot-solid.svg";
+import redMapPin from "./../assets/images/red-pin.png";
+import userMapPin from "./../assets/images/pin-with-green.png";
 
 // pin style
-export const pinStyle = (color: string): Style => {
+export const pinStyle = (type: string): Style => {
   return new Style({
     image: new Icon({
-      anchor: [0.5, 40],
+      anchor: [0.5, 50],
+      scale: 0.7,
       anchorXUnits: "fraction",
       anchorYUnits: "pixels",
-      src: locationPin,
-      color,
+      src: type === "user" ? userMapPin : redMapPin,
     }),
   });
 };

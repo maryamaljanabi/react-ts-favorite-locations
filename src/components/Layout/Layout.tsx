@@ -29,7 +29,7 @@ const Layout: React.FC = (): JSX.Element => {
   useEffect(() => {
     //add coordinates on map in center
     if (map && !layerExists(map, "userLocation") && coordinates && coordinates.length) {
-      const vectorLayer: VectorLayer<VectorSource<Geometry>> = addVectorLayer(map, "userLocation", pinStyle("#3fa4e8"));
+      const vectorLayer: VectorLayer<VectorSource<Geometry>> = addVectorLayer(map, "userLocation", pinStyle("user"));
       addFeature(vectorLayer.getSource(), coordinates);
       centerMap(map, coordinates);
     }
@@ -39,7 +39,7 @@ const Layout: React.FC = (): JSX.Element => {
     if (map && Boolean(locationsData) && Boolean(locationsData.length)) {
       console.log(locationsData);
       removeLayer(map, "searchLocation");
-      const locationsLayer: VectorLayer<VectorSource<Geometry>> = addVectorLayer(map, "searchLocation", pinStyle("#ce4829"));
+      const locationsLayer: VectorLayer<VectorSource<Geometry>> = addVectorLayer(map, "searchLocation", pinStyle("location"));
       locationsData.map((location: any) => {
         if (location.geometry.coordinates) addFeature(locationsLayer.getSource(), location.geometry.coordinates);
       });
