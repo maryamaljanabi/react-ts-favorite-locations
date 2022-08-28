@@ -3,6 +3,7 @@ import { Geometry } from "ol/geom";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import React, { useEffect, useState } from "react";
+import { handleTooltipDisplay } from "../../helpers/mapEvents";
 import { addFeature, addVectorLayer, centerMap, layerExists, pinStyle, removeLayer } from "../../helpers/mapOperations";
 import FavoritesIcon from "../Favorites/FavoritesIcon";
 import FavoritesList from "../Favorites/FavoritesList";
@@ -30,8 +31,9 @@ const Layout: React.FC = (): JSX.Element => {
     //add coordinates on map in center
     if (map && !layerExists(map, "userLocation") && coordinates && coordinates.length) {
       const vectorLayer: VectorLayer<VectorSource<Geometry>> = addVectorLayer(map, "userLocation", pinStyle("user"));
-      addFeature(vectorLayer.getSource(), coordinates);
+      addFeature(vectorLayer.getSource(), coordinates, "user", {});
       centerMap(map, coordinates);
+      handleTooltipDisplay(map);
     }
   }, [map, coordinates]);
 
@@ -41,7 +43,7 @@ const Layout: React.FC = (): JSX.Element => {
       removeLayer(map, "searchLocation");
       const locationsLayer: VectorLayer<VectorSource<Geometry>> = addVectorLayer(map, "searchLocation", pinStyle("location"));
       locationsData.map((location: any) => {
-        if (location.geometry.coordinates) addFeature(locationsLayer.getSource(), location.geometry.coordinates);
+        if (location.geometry.coordinates) addFeature(locationsLayer.getSource(), location.geometry.coordinates, "location", location);
       });
     }
   }, [locationsData]);

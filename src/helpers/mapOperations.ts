@@ -54,9 +54,10 @@ export const addVectorLayer = (map: Map, name: string, featureStyle: Style): Vec
 };
 
 // add a location pin
-export const addFeature = (source: VectorSource<Geometry> | null, coordinates: number[]): void => {
+export const addFeature = (source: VectorSource<Geometry> | null, coordinates: number[], featureName: string, properties: Object): void => {
   const feature = new Feature({
     geometry: new Point(fromLonLat(coordinates)),
+    [featureName]: properties,
   });
   source?.addFeature(feature);
 };

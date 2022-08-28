@@ -32,3 +32,47 @@
 .ol-attribution.ol-uncollapsible {
   display: none;
 }
+
+/* tooltip */
+#tooltip-container {
+  position: absolute;
+  display: none;
+  background-color: white;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  padding: 7px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  bottom: 12px;
+  z-index: 100;
+  width: 150px;
+  height: 60px;
+}
+#tooltip-container:after,
+#tooltip-container:before {
+  top: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+#tooltip-container:after {
+  border-top-color: white;
+  border-width: 10px;
+  left: 50%;
+  margin-left: -10px;
+}
+#tooltip-container:before {
+  border-top-color: #cccccc;
+  border-width: 11px;
+  left: 50%;
+  margin-left: -11px;
+}
+#tooltip-content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
