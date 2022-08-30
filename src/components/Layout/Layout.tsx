@@ -3,7 +3,7 @@ import { Geometry } from "ol/geom";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import React, { useEffect, useState } from "react";
-import { handleTooltipDisplay } from "../../helpers/mapEvents";
+import { handlePopupDisplay, handleTooltipDisplay } from "../../helpers/mapEvents";
 import { addFeature, addVectorLayer, centerMap, layerExists, pinStyle, removeLayer } from "../../helpers/mapOperations";
 import FavoritesIcon from "../Favorites/FavoritesIcon";
 import FavoritesList from "../Favorites/FavoritesList";
@@ -34,6 +34,7 @@ const Layout: React.FC = (): JSX.Element => {
       addFeature(vectorLayer.getSource(), coordinates, "user", {});
       centerMap(map, coordinates);
       handleTooltipDisplay(map);
+      handlePopupDisplay(map);
     }
   }, [map, coordinates]);
 
