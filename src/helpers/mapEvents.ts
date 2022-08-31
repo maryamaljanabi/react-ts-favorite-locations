@@ -3,6 +3,9 @@ import Feature from "ol/Feature";
 import { Point } from "ol/geom";
 import Map from "ol/Map";
 import Overlay from "ol/Overlay";
+import { addToLocalStorage, existsInLocalStorage, getFromLocalStorage, removeFromLocalStorage } from "./addLocationToStorage";
+import starIcon from "./../assets/images/star-solid.svg";
+import starDisabledIcon from "./../assets/images/star-disabled.svg";
 
 export const handleTooltipDisplay = (map: Map): void => {
   const tooltipContainerElement = document.getElementById("tooltip-container") as HTMLDivElement;
@@ -41,8 +44,8 @@ export const handleTooltipDisplay = (map: Map): void => {
 export const handlePopupDisplay = (map: Map): void => {
   // on click popup
   const popupContainerElement: HTMLDivElement = document.getElementById("popup-container") as HTMLDivElement;
+  const popupContentElement: HTMLDivElement = document.getElementById("popup-content") as HTMLDivElement;
   const popupTextElement: HTMLDivElement = document.getElementById("popup-text") as HTMLDivElement;
-  const popupIconElement: HTMLDivElement = document.getElementById("popup-icon") as HTMLDivElement;
   const tooltipContainerElement: HTMLDivElement = document.getElementById("tooltip-container") as HTMLDivElement;
 
   const overlayLayer: Overlay = new Overlay({
@@ -64,14 +67,25 @@ export const handlePopupDisplay = (map: Map): void => {
       tooltipContainerElement.style.display = "none";
       map.getViewport().style.cursor = "auto";
 
-      popupTextElement.innerHTML = `
+      popupContentElement.innerHTML = `
+      <div id="popup-text">
       <p> Name: ${location.name ?? "Unknown"} </p>
       <p> Street: ${location.street ?? "Unknown"} </p>
-      <p> Post Code: ${location.postcode ?? "Unknown"} </p>`;
-      console.log(popupIconElement);
+      <p> Post Code: ${location.postcode ?? "Unknown"} </p>
+      </div>
+      <img src="${starDisabledIcon}" id="popup-icon" alt="fav-icon" />
+      `;
+
+      const popupIconElement: HTMLImageElement = document.getElementById("popup-icon") as HTMLImageElement;
+      checkFavIconInPopup(popupIconElement, location.place_id);
 
       popupIconElement.addEventListener("click", () => {
-        popupIconElement.setAttribute("class", "popup-icon-filled");
+        if (existsInLocalStorage(location.place_id)) {
+          removeFromLocalStorage(location.place_id);
+        } else {
+          addToLocalStorage(location.place_id, location);
+        }
+        checkFavIconInPopup(popupIconElement, location.place_id);
       });
 
       const geometry: Point = feature.getGeometry() as Point;
@@ -92,4 +106,10 @@ export const handlePopupDisplay = (map: Map): void => {
   map.on("singleclick", (evt) => {
     displayFeaturePopup(map.getEventPixel(evt.originalEvent));
   });
+};
+
+const checkFavIconInPopup = (favIconElement: HTMLImageElement, placeId: string): void => {
+  //check if the placeId is in the local storage
+  if (getFromLocalStorage(placeId)) favIconElement.src = starIcon;
+  else favIconElement.src = starDisabledIcon;
 };

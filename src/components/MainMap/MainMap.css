@@ -113,22 +113,9 @@
 }
 
 #popup-icon {
-  flex: 1;
   text-align: end;
   margin-bottom: auto;
-  fill: #facc15;
-  width: fit-content;
-}
-
-#popup-icon path {
-  fill: none;
-  stroke: #facc15;
-  stroke-width: 40px;
-}
-
-#popup-icon.popup-icon-filled path {
-  fill: #facc15;
-  stroke: none;
+  width: 20px;
 }
 
 #popup-icon:hover {

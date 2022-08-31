@@ -7,7 +7,6 @@ import React, { useEffect, useRef, useState } from "react";
 import "./MainMap.css";
 import "ol/ol.css";
 import { transformExtent } from "ol/proj";
-import { ReactComponent as StarIcon } from "./../../assets/images/star-solid.svg";
 
 interface MapProps {
   setMap: (map: Map) => void;
@@ -59,10 +58,7 @@ const MainMap: React.FC<MapProps> = ({ setMap, setExtent }): JSX.Element => {
   return (
     <div ref={mapDiv} className="map">
       <div id="popup-container">
-        <div id="popup-content">
-          <div id="popup-text"></div>
-          <StarIcon id="popup-icon" />
-        </div>
+        <div id="popup-content"></div>
       </div>
 
       <div id="tooltip-container">
