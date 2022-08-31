@@ -110,6 +110,6 @@ export const handlePopupDisplay = (map: Map): void => {
 
 const checkFavIconInPopup = (favIconElement: HTMLImageElement, placeId: string): void => {
   //check if the placeId is in the local storage
-  if (getFromLocalStorage(placeId)) favIconElement.src = starIcon;
+  if (existsInLocalStorage(placeId)) favIconElement.src = starIcon;
   else favIconElement.src = starDisabledIcon;
 };

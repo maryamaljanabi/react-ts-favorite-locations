@@ -5,9 +5,9 @@ export interface ILocation {
 }
 
 export const getFromLocalStorage = (id: string): ILocation | null => {
-  if (!localStorage.getItem(id)) return null;
+  if (!localStorage.getItem(`locationId:${id}`)) return null;
   try {
-    return JSON.parse(localStorage.getItem(id) || "");
+    return JSON.parse(localStorage.getItem(`locationId:${id}`) || "");
   } catch (error) {
     console.log("error retrieving from local storage", error);
     return null;
@@ -15,13 +15,13 @@ export const getFromLocalStorage = (id: string): ILocation | null => {
 };
 
 export const addToLocalStorage = (id: string, value: ILocation): void => {
-  if (!getFromLocalStorage(id)) localStorage.setItem(id, JSON.stringify(value));
-};
-
-export const removeFromLocalStorage = (id: string): void => {
-  if (getFromLocalStorage(id)) localStorage.removeItem(id);
+  if (!getFromLocalStorage(`locationId:${id}`)) localStorage.setItem(`locationId:${id}`, JSON.stringify(value));
 };
 
 export const existsInLocalStorage = (id: string): boolean => {
-  return localStorage.getItem(id) ? true : false;
+  return localStorage.getItem(`locationId:${id}`) ? true : false;
+};
+
+export const removeFromLocalStorage = (id: string): void => {
+  if (localStorage.getItem(`locationId:${id}`)) localStorage.removeItem(`locationId:${id}`);
 };
