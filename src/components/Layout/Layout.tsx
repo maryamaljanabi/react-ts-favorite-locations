@@ -49,14 +49,12 @@ const Layout: React.FC = (): JSX.Element => {
     }
   }, [locationsData]);
 
-  console.log(map?.getLayers().getArray());
-
   return (
     <div>
       <MainMap setMap={(map: Map): void => setMap(map)} setExtent={(radius: number[]): void => setMapExtent(radius)} />
       <SearchBar favoritesOpen={favoritesOpen} setLocationsData={(data: []): void => setLocationsData(data)} extent={mapExtent} />
       <FavoritesIcon favoritesOpen={favoritesOpen} setFavoritesOpen={setFavoritesOpen} />
-      <FavoritesList favoritesOpen={favoritesOpen} setFavoritesOpen={setFavoritesOpen} locationsList={[]} />
+      <FavoritesList favoritesOpen={favoritesOpen} setFavoritesOpen={setFavoritesOpen} />
     </div>
   );
 };
