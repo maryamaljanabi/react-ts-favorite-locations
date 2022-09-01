@@ -1,5 +1,5 @@
 import React from "react";
-import { ILocation } from "../../helpers/addLocationToStorage";
+import { ILocation, removeFromLocalStorage } from "../../helpers/addLocationToStorage";
 
 export const FavoritesCard: React.FC<ILocation> = (props): JSX.Element => {
   return (
@@ -12,10 +12,16 @@ export const FavoritesCard: React.FC<ILocation> = (props): JSX.Element => {
         {Boolean(props.postcode) && <div className="font-semibold text-gray-500"> {props.postcode}</div>}
 
         <div className="flex flex-row justify-between mt-2 mr-2">
-          <button className="px-2 py-1 text-sm text-slate-800 font-semibold rounded-full border border-slate-200 hover:text-white hover:bg-slate-800 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-slate-800 focus:ring-offset-2 transition-all ease-in-out duration-150">
+          {/* <button
+            className="px-2 py-1 text-sm text-slate-800 font-semibold rounded-full border border-slate-200 hover:text-white hover:bg-slate-800 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-slate-800 focus:ring-offset-2 transition-all ease-in-out duration-150"
+            onClick={(): void => handleGoToMap()}
+          >
             Go To Map
-          </button>
-          <button className="px-4 py-1 text-sm text-red-800 font-semibold rounded-full border border-red-200 hover:text-white hover:bg-red-800 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-red-800 focus:ring-offset-2 transition-all ease-in-out duration-150">
+          </button> */}
+          <button
+            className="px-4 py-1 text-sm text-red-800 font-semibold rounded-full border border-red-200 hover:text-white hover:bg-red-800 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-red-800 focus:ring-offset-2 transition-all ease-in-out duration-150"
+            onClick={(): void => removeFromLocalStorage(props.id as string)}
+          >
             Remove
           </button>
         </div>

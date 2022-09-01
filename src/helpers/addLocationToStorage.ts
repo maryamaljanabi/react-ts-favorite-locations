@@ -26,7 +26,10 @@ export const getFromLocalStorage = (id: string): ILocation | null => {
 };
 
 export const addToLocalStorage = (id: string, value: ILocation): void => {
-  if (!getFromLocalStorage(getStructuredIdName(id))) localStorage.setItem(getStructuredIdName(id), JSON.stringify(value));
+  if (!getFromLocalStorage(getStructuredIdName(id))) {
+    localStorage.setItem(getStructuredIdName(id), JSON.stringify(value));
+    window.dispatchEvent(new Event("storage"));
+  }
 };
 
 export const existsInLocalStorage = (id: string): boolean => {
@@ -35,7 +38,10 @@ export const existsInLocalStorage = (id: string): boolean => {
 
 export const removeFromLocalStorage = (id: string): void => {
   console.log("removing...", id);
-  if (localStorage.getItem(getStructuredIdName(id))) localStorage.removeItem(getStructuredIdName(id));
+  if (localStorage.getItem(getStructuredIdName(id))) {
+    localStorage.removeItem(getStructuredIdName(id));
+    window.dispatchEvent(new Event("storage"));
+  }
 };
 
 export const getAllLocalStorageItems = (): IFavoriteLocations => {

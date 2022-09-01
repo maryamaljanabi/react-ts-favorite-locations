@@ -14,6 +14,9 @@ const FavoritesList: React.FC<FavoritesProps> = ({ favoritesOpen, setFavoritesOp
 
   useEffect(() => {
     setFavoriteLocations(getAllLocalStorageItems());
+    window.addEventListener("storage", () => {
+      setFavoriteLocations({ ...getAllLocalStorageItems() });
+    });
   }, []);
 
   return (
@@ -27,7 +30,7 @@ const FavoritesList: React.FC<FavoritesProps> = ({ favoritesOpen, setFavoritesOp
         <CloseIcon />
       </div>
 
-      {!(Boolean(favoriteLocations) || Boolean(favoriteLocations?.length)) ? (
+      {!Boolean(Object.keys(favoriteLocations)?.length) ? (
         <div className="p-3 flex flex-col items-center gap-2 mt-[50%] h-full">
           <EmptyIcon className="w-5 h-5" />
           <h3>No favorites locations added</h3>

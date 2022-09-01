@@ -20,8 +20,6 @@ const Layout: React.FC = (): JSX.Element => {
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(function (position) {
-        console.log("Latitude is :", position.coords.latitude);
-        console.log("Longitude is :", position.coords.longitude);
         setCoordinates([position.coords.longitude, position.coords.latitude]);
       });
     }
