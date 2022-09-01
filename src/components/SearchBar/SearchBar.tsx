@@ -33,14 +33,15 @@ const SearchBar: React.FC<SearchBarProps> = ({ favoritesOpen, setLocationsData, 
   const handleLocationsSearch = async (): Promise<void> => {
     try {
       if (extent && extent.length) {
-        const res = await apiRequests(searchType, extent);
+        const res = await apiRequests(searchType, searchText, extent);
         let data = await res.json();
-        data = data.features.map((item: any) => {
-          item.properties.searchIconType = searchType;
-          return { ...item.properties };
-        });
-        if (typeof setLocationsData === "function" && Boolean(data) && Boolean(data.length)) {
-          setLocationsData(data);
+        if (Boolean(data.features) && Boolean(data.features.length)) {
+          data = data.features.map((item: any) => {
+            item.properties.searchIconType = searchType;
+            return { ...item.properties };
+          });
+
+          if (typeof setLocationsData === "function") setLocationsData(data);
         }
       }
     } catch (error) {
