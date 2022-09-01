@@ -21,7 +21,7 @@ export const handleTooltipDisplay = (map: Map): void => {
         tooltipContainerElement.style.display = "block";
         map.getViewport().style.cursor = "pointer";
         tooltipContainerElement.style.top = pixel[1] - 65 + "px";
-        tooltipContentElement.innerHTML = feature.get("user") ? "Your Location" : feature.get("location").properties?.name ?? "Unnamed Place";
+        tooltipContentElement.innerHTML = feature.get("user") ? "Your Location" : feature.get("location").name ?? "Unnamed Place";
       } else {
         tooltipContainerElement.style.display = "none";
         map.getViewport().style.cursor = "auto";
@@ -61,7 +61,7 @@ export const handlePopupDisplay = (map: Map): void => {
     }) as Feature;
 
     if (feature && feature.get("location")) {
-      let location = feature.get("location").properties;
+      let location = feature.get("location");
 
       popupContainerElement.style.display = "block";
       tooltipContainerElement.style.display = "none";

@@ -38,7 +38,7 @@ const FavoritesList: React.FC<FavoritesProps> = ({ favoritesOpen, setFavoritesOp
       ) : (
         <div className="mt-3 px-2 text-sm h-full overflow-auto">
           {Object.entries(favoriteLocations).map(([key, value]) => (
-            <FavoritesCard key={key} id={key} name={value.name} postcode={value.postcode} street={value.street} city={value.city} country={value.country} />
+            <FavoritesCard key={key} id={key} name={value.name} postcode={value.postcode} street={value.street} city={value.city} country={value.country} searchIconType={value.searchIconType} />
           ))}
         </div>
       )}

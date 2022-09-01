@@ -5,6 +5,7 @@ export interface ILocation {
   postcode: string;
   country?: string;
   city?: string;
+  searchIconType: string;
 }
 
 export interface IFavoriteLocations {

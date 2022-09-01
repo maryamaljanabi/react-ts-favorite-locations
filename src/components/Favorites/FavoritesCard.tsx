@@ -1,10 +1,30 @@
 import React from "react";
 import { ILocation, removeFromLocalStorage } from "../../helpers/addLocationToStorage";
+import cateringIcon from "./../../assets/images/catering.svg";
+import accommodationIcon from "./../../assets/images/hotel.svg";
+import commercialIcon from "./../../assets/images/store.svg";
+import entertainmentIcon from "./../../assets/images/theater.svg";
 
 export const FavoritesCard: React.FC<ILocation> = (props): JSX.Element => {
+  const handleTypeIcon = (type: string) => {
+    switch (type) {
+      case "catering":
+        return cateringIcon;
+      case "accommodation":
+        return accommodationIcon;
+      case "commercial":
+        return commercialIcon;
+      case "entertainment":
+        return entertainmentIcon;
+      case "default":
+        return;
+    }
+  };
   return (
     <div className="my-2 p-2 flex flex-row gap-3 border-[1px] border-solid rounded border-gray-400">
-      <div>icon</div>
+      <div>
+        <img src={handleTypeIcon(props.searchIconType)} className="pt-1" />
+      </div>
       <div className="flex flex-col w-full">
         {Boolean(props.name) && <div className="font-semibold text-slate-800"> {props.name}</div>}
         {Boolean(props.street) && <div className="font-semibold text-slate-500"> {props.street}</div>}
