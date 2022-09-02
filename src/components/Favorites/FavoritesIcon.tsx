@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Tooltip } from "../Tooltip/Tooltip";
-import { ReactComponent as StarIcon } from "./../../assets/images/star-solid.svg";
+import starIcon from "./../../assets/images/star-solid.svg";
 
 export interface FavoritesProps {
   favoritesOpen: boolean;
@@ -19,7 +19,7 @@ const FavoritesIcon: React.FC<FavoritesProps> = ({ favoritesOpen, setFavoritesOp
       onMouseOut={(): void => setTooltipOpen(false)}
       className="absolute left-10 top-6 border-slate-800 rounded bg-slate-800 p-1 hover:cursor-pointer"
     >
-      <StarIcon className="w-5 h-5 fill-yellow-400" />
+      <img src={starIcon} className="w-5 h-5 fill-yellow-400" />
       {!favoritesOpen && <Tooltip showTooltip={tooltipOpen} hoverText="Favorite Locations" />}
     </div>
   );

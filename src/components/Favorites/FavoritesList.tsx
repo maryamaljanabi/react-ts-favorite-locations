@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FavoritesProps } from "./FavoritesIcon";
-import { ReactComponent as CloseIcon } from "./../../assets/images/circle-xmark-solid.svg";
-import { ReactComponent as EmptyIcon } from "./../../assets/images/ghost-solid.svg";
+import closeIcon from "./../../assets/images/circle-xmark-solid.svg";
+import emptyIcon from "./../../assets/images/ghost-solid.svg";
 import { FavoritesCard } from "./FavoritesCard";
 import { getAllLocalStorageItems, IFavoriteLocations } from "../../helpers/addLocationToStorage";
 
@@ -27,12 +27,12 @@ const FavoritesList: React.FC<FavoritesProps> = ({ favoritesOpen, setFavoritesOp
           if (typeof setFavoritesOpen === "function") setFavoritesOpen(false);
         }}
       >
-        <CloseIcon />
+        <img src={closeIcon} />
       </div>
 
       {!Boolean(Object.keys(favoriteLocations)?.length) ? (
         <div className="p-3 flex flex-col items-center gap-2 mt-[50%] h-full">
-          <EmptyIcon className="w-5 h-5" />
+          <img src={emptyIcon} className="w-5 h-5" />
           <h3>No favorites locations added</h3>
         </div>
       ) : (
