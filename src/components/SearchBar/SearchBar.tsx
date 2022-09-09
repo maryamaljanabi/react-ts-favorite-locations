@@ -54,14 +54,15 @@ const SearchBar: React.FC<SearchBarProps> = ({ favoritesOpen, setLocationsData, 
   }`;
 
   return (
-    <div className={containerStyle}>
+    <div className={containerStyle} data-testid="search-bar-container">
       <select
         value={searchType}
         onChange={(event: ChangeEvent<HTMLSelectElement>): void => setSearchType(event.target.value)}
         className="rounded-l-lg p-2 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white text-sm w-60 focus:ring-0 focus:outline-none"
+        data-testid="select-search"
       >
         {options.map((option) => (
-          <option key={option.value} value={option.value} className="rounded">
+          <option data-testid="select-option" key={option.value} value={option.value} className="rounded">
             {option.label}
           </option>
         ))}
@@ -72,8 +73,13 @@ const SearchBar: React.FC<SearchBarProps> = ({ favoritesOpen, setLocationsData, 
         value={searchText}
         onChange={(evt: ChangeEvent<HTMLInputElement>): void => setSearchText(evt.target.value)}
         className="p-2 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white text-sm w-1/3 focus:ring-0 focus:outline-none"
+        data-testid="name-search-text"
       />
-      <button className="px-8 rounded-r-lg bg-slate-800 text-white p-2 uppercase border-slate-800 border-t border-b border-r text-sm" onClick={(): Promise<void> => handleLocationsSearch()}>
+      <button
+        className="px-8 rounded-r-lg bg-slate-800 text-white p-2 uppercase border-slate-800 border-t border-b border-r text-sm"
+        data-testid="search-bar-submit-btn"
+        onClick={(): Promise<void> => handleLocationsSearch()}
+      >
         Search
       </button>
     </div>

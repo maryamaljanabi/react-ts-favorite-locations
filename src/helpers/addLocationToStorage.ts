@@ -1,18 +1,21 @@
 export interface ILocation {
-  id?: string;
+  id: string;
   name: string;
   street: string;
   postcode: string;
   country?: string;
   city?: string;
   searchIconType: string;
+  lon?: number;
+  lat?: number;
 }
 
 export interface IFavoriteLocations {
   [id: string]: ILocation;
 }
 
-const getStructuredIdName = (id: string): string => {
+export const getStructuredIdName = (id: string): string => {
+  if (!id) return "";
   return id.includes("locationId") ? id : `locationId:${id}`;
 };
 
@@ -38,11 +41,14 @@ export const existsInLocalStorage = (id: string): boolean => {
 };
 
 export const removeFromLocalStorage = (id: string): void => {
-  console.log("removing...", id);
   if (localStorage.getItem(getStructuredIdName(id))) {
     localStorage.removeItem(getStructuredIdName(id));
     window.dispatchEvent(new Event("storage"));
   }
+};
+
+export const clearLocalStorage = (): void => {
+  localStorage.clear();
 };
 
 export const getAllLocalStorageItems = (): IFavoriteLocations => {

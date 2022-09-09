@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FavoritesProps } from "./FavoritesIcon";
 import closeIcon from "./../../assets/images/circle-xmark-solid.svg";
 import emptyIcon from "./../../assets/images/ghost-solid.svg";
-import { FavoritesCard } from "./FavoritesCard";
+import FavoritesCard from "./FavoritesCard";
 import { getAllLocalStorageItems, IFavoriteLocations } from "../../helpers/addLocationToStorage";
 
 const FavoritesList: React.FC<FavoritesProps> = ({ favoritesOpen, setFavoritesOpen }): JSX.Element => {
@@ -20,9 +20,10 @@ const FavoritesList: React.FC<FavoritesProps> = ({ favoritesOpen, setFavoritesOp
   }, []);
 
   return (
-    <div className={containerStyle}>
+    <div className={containerStyle} data-testid="favorites-list-container">
       <div
         className="w-5 h-5 mt-2 mr-2 ml-auto fill-red-800 hover:cursor-pointer"
+        data-testid="favorites-list-close-icon"
         onClick={(): void => {
           if (typeof setFavoritesOpen === "function") setFavoritesOpen(false);
         }}
@@ -33,10 +34,10 @@ const FavoritesList: React.FC<FavoritesProps> = ({ favoritesOpen, setFavoritesOp
       {!Boolean(Object.keys(favoriteLocations)?.length) ? (
         <div className="p-3 flex flex-col items-center gap-2 mt-[50%] h-full">
           <img src={emptyIcon} className="w-5 h-5" />
-          <h3>No favorites locations added</h3>
+          <h3 data-testid="favorites-list-nodata">No favorites locations added</h3>
         </div>
       ) : (
-        <div className="mt-3 px-2 text-sm h-full overflow-auto">
+        <div className="mt-3 px-2 text-sm h-full overflow-auto" data-testid="favorites-list-locations-mapper">
           {Object.entries(favoriteLocations).map(([key, value]) => (
             <FavoritesCard key={key} id={key} name={value.name} postcode={value.postcode} street={value.street} city={value.city} country={value.country} searchIconType={value.searchIconType} />
           ))}

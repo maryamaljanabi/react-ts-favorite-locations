@@ -18,8 +18,9 @@ const FavoritesIcon: React.FC<FavoritesProps> = ({ favoritesOpen, setFavoritesOp
       onMouseOver={(): void => setTooltipOpen(true)}
       onMouseOut={(): void => setTooltipOpen(false)}
       className="absolute left-10 top-6 border-slate-800 rounded bg-slate-800 p-1 hover:cursor-pointer"
+      data-testid="favorites-icon-container"
     >
-      <img src={starIcon} className="w-5 h-5 fill-yellow-400" />
+      <img src={starIcon} className="w-5 h-5" data-testid="favorites-icon-star" />
       {!favoritesOpen && <Tooltip showTooltip={tooltipOpen} hoverText="Favorite Locations" />}
     </div>
   );

@@ -38,6 +38,7 @@ const Layout: React.FC = (): JSX.Element => {
 
   useEffect(() => {
     if (map && Boolean(locationsData) && Boolean(locationsData.length)) {
+      console.log(locationsData);
       removeLayer(map, "searchLocation");
       const locationsLayer: VectorLayer<VectorSource<Geometry>> = addVectorLayer(map, "searchLocation", pinStyle("location"));
       locationsData.map((location: any) => {
@@ -47,7 +48,7 @@ const Layout: React.FC = (): JSX.Element => {
   }, [locationsData]);
 
   return (
-    <div>
+    <div data-testid="layout-container">
       <MainMap setMap={(map: Map): void => setMap(map)} setExtent={(radius: number[]): void => setMapExtent(radius)} />
       <SearchBar favoritesOpen={favoritesOpen} setLocationsData={(data: []): void => setLocationsData(data)} extent={mapExtent} />
       <FavoritesIcon favoritesOpen={favoritesOpen} setFavoritesOpen={setFavoritesOpen} />

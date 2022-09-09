@@ -2,7 +2,7 @@ import Layout from "./components/Layout/Layout";
 
 function App() {
   return (
-    <div>
+    <div data-testid="app">
       <Layout />
     </div>
   );
