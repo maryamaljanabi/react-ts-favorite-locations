@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-ts-favorite-locations/static/css/main.1bcd6d3e.css",
-    "main.js": "/react-ts-favorite-locations/static/js/main.1c4e5b60.js",
+    "main.js": "/react-ts-favorite-locations/static/js/main.2ef8c897.js",
     "static/js/787.a95a656c.chunk.js": "/react-ts-favorite-locations/static/js/787.a95a656c.chunk.js",
     "static/media/theater.svg": "/react-ts-favorite-locations/static/media/theater.aed863264f942e15d3e3b944080920cc.svg",
     "static/media/hotel.svg": "/react-ts-favorite-locations/static/media/hotel.b8f6556783099af960a6f72bb7fc06e4.svg",
@@ -13,11 +13,11 @@
     "static/media/star-solid.svg": "/react-ts-favorite-locations/static/media/star-solid.f150ec0d1a5ccc9dea2d93a73839a066.svg",
     "static/media/circle-xmark-solid.svg": "/react-ts-favorite-locations/static/media/circle-xmark-solid.b598ec01cbde9c7d45ab484db8225d90.svg",
     "main.1bcd6d3e.css.map": "/react-ts-favorite-locations/static/css/main.1bcd6d3e.css.map",
-    "main.1c4e5b60.js.map": "/react-ts-favorite-locations/static/js/main.1c4e5b60.js.map",
+    "main.2ef8c897.js.map": "/react-ts-favorite-locations/static/js/main.2ef8c897.js.map",
     "787.a95a656c.chunk.js.map": "/react-ts-favorite-locations/static/js/787.a95a656c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1bcd6d3e.css",
-    "static/js/main.1c4e5b60.js"
+    "static/js/main.2ef8c897.js"
   ]
 }
