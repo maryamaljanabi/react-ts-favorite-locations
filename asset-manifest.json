@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/react-ts-favorite-locations/static/css/main.1bcd6d3e.css",
+    "main.js": "/react-ts-favorite-locations/static/js/main.1c4e5b60.js",
+    "static/js/787.a95a656c.chunk.js": "/react-ts-favorite-locations/static/js/787.a95a656c.chunk.js",
+    "static/media/theater.svg": "/react-ts-favorite-locations/static/media/theater.aed863264f942e15d3e3b944080920cc.svg",
+    "static/media/hotel.svg": "/react-ts-favorite-locations/static/media/hotel.b8f6556783099af960a6f72bb7fc06e4.svg",
+    "index.html": "/react-ts-favorite-locations/index.html",
+    "static/media/store.svg": "/react-ts-favorite-locations/static/media/store.b6622041d678c7f758457f30068852bd.svg",
+    "static/media/catering.svg": "/react-ts-favorite-locations/static/media/catering.ac76f4378d8e74d02bb78119098f6af1.svg",
+    "static/media/ghost-solid.svg": "/react-ts-favorite-locations/static/media/ghost-solid.f5907542d21b9a24c604e750494c8298.svg",
+    "static/media/star-disabled.svg": "/react-ts-favorite-locations/static/media/star-disabled.1992a89c5802fd2b775348cf2c01a619.svg",
+    "static/media/star-solid.svg": "/react-ts-favorite-locations/static/media/star-solid.f150ec0d1a5ccc9dea2d93a73839a066.svg",
+    "static/media/circle-xmark-solid.svg": "/react-ts-favorite-locations/static/media/circle-xmark-solid.b598ec01cbde9c7d45ab484db8225d90.svg",
+    "main.1bcd6d3e.css.map": "/react-ts-favorite-locations/static/css/main.1bcd6d3e.css.map",
+    "main.1c4e5b60.js.map": "/react-ts-favorite-locations/static/js/main.1c4e5b60.js.map",
+    "787.a95a656c.chunk.js.map": "/react-ts-favorite-locations/static/js/787.a95a656c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1bcd6d3e.css",
+    "static/js/main.1c4e5b60.js"
+  ]
+}
