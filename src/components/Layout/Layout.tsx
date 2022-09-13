@@ -38,7 +38,6 @@ const Layout: React.FC = (): JSX.Element => {
 
   useEffect(() => {
     if (map && Boolean(locationsData) && Boolean(locationsData.length)) {
-      console.log(locationsData);
       removeLayer(map, "searchLocation");
       const locationsLayer: VectorLayer<VectorSource<Geometry>> = addVectorLayer(map, "searchLocation", pinStyle("location"));
       locationsData.map((location: any) => {
